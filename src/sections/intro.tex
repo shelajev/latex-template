@@ -1,46 +1,8 @@
 \section*{Introduction}
 \addcontentsline{toc}{section}{Introduction}
 
-Software inevitably evolves during its lifetime. General dynamic system update
-problem considers ways to update or patch the executing program without
-interrupting its computation. One of the established ways to do that is to
-include specific updating code either into the kernel running the application or
-the application itself.
+Here comes the math: $f=(x_1, \ldots, x_n)$ 
 
-Updating application code at an arbitrary moment of time is inherently not safe.
-Applying on-the-fly changes to the running code at the arbitrary time is
-inherently not safe. Even if the code replacement is instantaneous across the
-whole program the new program can be not compatible with the existing state of
-the application.
-For example, imagine that the new version of the program adds an instance field
-to an existing class that is present, loaded and instantiated in the running
-program.
-The existing objects cannot have any meaningful value in the new field and if
-the application is not ready to handle default values like null, then the
-behavior of the updated program, including NullPointerExceptions, is different
-from running the new version of the program in a new process.
 
-Other types of changes applied at an arbitrary moment without supervision of the
-system can lead to different erroneous conditions in the application. The common
-approach to mitigate the problem is to pause the application and apply the
-changes while nothing is executed in the program.
-However, it turns out that you cannot just pause the program during executing
-arbitrary code, so you must include locking mechanisms around certain actions
-that prevent threads from entering dangerous sections of the code when an update
-is scheduled.
 
-This approach works, but it introduces a performance degradation due to
-increased number of locks in the application code. In this paper we are
-investigating the opposite trade-off. We don’t introduce the locks that will
-herd threads into a safepoint, but we accept that updating application is not
-immediate and certain.
-
-This paper is structured as follows, in chapter 2 we describe the general
-architecture of the framework for probabilistic dynamic application updates
-without safepointing; chapter 3 describes the exact consequences that certain
-types of changes to the code bring; in chapter 4 we discuss the implementation
-details of such framework and challenges that occurred during integrating the
-prototype with the existing “unsafe” updating functionality offered by JRebel.
-In the final chapter we discuss the results of this experiment, evaluate
-applicability of this approach in the industrial setting and offer the direction
-for the further research.
+Hello world
